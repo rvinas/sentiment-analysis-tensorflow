@@ -1,10 +1,15 @@
-# Tensorflow Sentiment Analysis
+# Sentiment Analysis using TensorFlow
 
 ## Overview
-Sentiment Analysis using a simple LSTM network to classify short texts into 2 categories (positive and negative). The implemented LSTM network is structured with the following layers (note that the batch dimension is omitted in the explanation):
+Sentiment Analysis using a simple LSTM network to classify short texts into 2 categories (positive and negative). The implemented LSTM network is structured as follows (note that the batch dimension is omitted in the explanation):
 - **Embedding layer**: Transforms each input (a tensor of *k* words) into a tensor of *k* *N*-dimensional vectors (word embeddings), where *N* is the embedding size. Every word will be associated to a vector of weights that needs to be learnt during the training process. You can gain more insight into word embeddings at [Vector Representations of Words](https://www.tensorflow.org/versions/r0.12/tutorials/word2vec/index.html).
 - **RNN layer**: It's made out of LSTM cells with a dropout wrapper. The intuition of LSTM networks is nicely described at [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/). LSTM weights need to be learnt during the training process. The RNN layer is unrolled dynamically, taking *k* word embeddings as input and outputting *k* *M*-dimensional vectors, where *M* is the hidden size of LSTM cells. 
 - **Softmax layer**: The RNN-layer output is averaged across *k* timesteps, obtaining a single tensor of size *M*. Finally, a softmax layer is used to compute classification probabilities.
+
+Cross-entropy is used as the loss function and RMSProp isthe optimizer that minimizes it.
+
+TensorBoard provides a nice overview of the whole graph:
+![TensorBoard graph](https://github.com/rvinas/sentiment_analysis_tensorflow/blob/master/graph_visualization.png)
 
 ## Prerequisites
 - Python 3.5
