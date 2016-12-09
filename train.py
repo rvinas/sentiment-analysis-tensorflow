@@ -28,26 +28,26 @@ tf.flags.DEFINE_string('stopwords_file', 'data/stopwords.txt',
                        'Path to stopwords file. If stopwords_file is None, no stopwords will be used')
 tf.flags.DEFINE_integer('n_samples', None,
                         'Number of samples to use from the dataset. Set n_samples=None to use the whole dataset')
-tf.flags.DEFINE_string('checkpoints_dir', 'checkpoints',
+tf.flags.DEFINE_string('checkpoints_root', 'checkpoints',
                        'Checkpoints directory. Parameters will be saved there')
 tf.flags.DEFINE_string('summaries_dir', 'logs',
                        'Directory where TensorFlow summaries will be stored')
 tf.flags.DEFINE_integer('batch_size', 100,
                         'Batch size')
 tf.flags.DEFINE_integer('train_steps', 300,
-                        'Number of train steps')
+                        'Number of training steps')
 tf.flags.DEFINE_integer('hidden_size', 75,
                         'Hidden size of LSTM layer')
 tf.flags.DEFINE_integer('embedding_size', 75,
                         'Size of embeddings layer')
-tf.flags.DEFINE_integer('random_state', 1,
-                        'Random state used for splitting and dropout. Default is 0')
+tf.flags.DEFINE_integer('random_state', 0,
+                        'Random state used for data splitting. Default is 0')
 tf.flags.DEFINE_float('learning_rate', 0.01,
                       'RMSProp learning rate')
 tf.flags.DEFINE_float('test_size', 0.2,
                       '0<test_size<1. Proportion of the dataset to be included in the test split.')
 tf.flags.DEFINE_float('dropout_keep_prob', 0.5,
-                      'Dropout keep-probability')
+                      '0<dropout_keep_prob<=1. Dropout keep-probability')
 tf.flags.DEFINE_integer('sequence_len', None,
                         'Maximum sequence length. Let m be the maximum sequence length in the'
                         ' dataset. Then, it\'s required that sequence_len >= m. If sequence_len'
@@ -64,7 +64,7 @@ validation_writer = tf.train.SummaryWriter(summaries_dir + '/validation')
 
 # Prepare model directory
 model_name = str(int(time.time()))
-model_dir = '{0}/{1}'.format(FLAGS.checkpoints_dir, model_name)
+model_dir = '{0}/{1}'.format(FLAGS.checkpoints_root, model_name)
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
