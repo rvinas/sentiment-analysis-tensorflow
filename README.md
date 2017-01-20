@@ -6,7 +6,7 @@ Sentiment Analysis using a simple LSTM network to classify short texts into 2 ca
 - **RNN layer**: It's made out of LSTM cells with a dropout wrapper. The intuition of LSTM networks is nicely described at [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/). LSTM weights need to be learnt during the training process. The RNN layer is unrolled dynamically, taking *k* word embeddings as input and outputting *k* *M*-dimensional vectors, where *M* is the hidden size of LSTM cells. 
 - **Softmax layer**: The RNN-layer output is averaged across *k* timesteps, obtaining a single tensor of size *M*. Finally, a softmax layer is used to compute classification probabilities.
 
-Cross-entropy is used as the loss function and RMSProp isthe optimizer that minimizes it.
+Cross-entropy is used as the loss function and RMSProp is the optimizer that minimizes it.
 
 TensorBoard provides a nice overview of the whole graph:
 ![TensorBoard graph](https://github.com/rvinas/sentiment_analysis_tensorflow/blob/master/graph_visualization.png)
