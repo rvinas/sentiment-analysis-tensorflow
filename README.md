@@ -42,5 +42,6 @@ Optional flags:
 After training the model, the checkpoints directory will be printed out. For example: `Model saved in: checkpoints/1481294288`
 
 ## Predict
+
 To make predictions using a previously trained model, run `python predict.py --checkpoints_dir <checkpoints directory>`
 For example: `python predict.py --checkpoints_dir checkpoints/1481294288`
