@@ -1,5 +1,5 @@
 # data_manager.py: Loads and preprocesses data
-# Copyright 2016 Ramon Viñas
+# Copyright 2016 Ramon Vinas
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
